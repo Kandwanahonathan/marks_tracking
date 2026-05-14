@@ -14,7 +14,10 @@ router.post('/InsertTrainees',async (req,res)=>{
   return res.status(201).json({message:"trainee inserted successfully",insert:insert})
    } catch (err) {
     console.log(err);
-    res.status(500).json({Error:err})
+          res.status(500).json({
+            success: false,
+            message: "Failed to save trainee in database"
+        })
     
    }
 })

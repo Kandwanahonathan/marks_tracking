@@ -10,7 +10,7 @@ export default function TraineInsert() {
     const[Trade_Id, setTrade_Id]=useState(0)
     async function trainee() {
     try {
-        const{Trainee_Id,FirstNames,LastName,Gender,Trade_Id}=req.body
+      
      if (!Trainee_Id || !FirstNames || !LastName || !Gender || !Trade_Id) {
        return alert("Fill out all fields")
      }
@@ -24,7 +24,10 @@ export default function TraineInsert() {
 
     } catch (err) {
         console.log(err);
-        alert(err)
+        alert(  alert(
+      err.response?.data?.message ||
+      "Server error occurred"
+   ) )
         
     }
 }
