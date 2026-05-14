@@ -1,0 +1,15 @@
+const express=require('express')
+const cors=require('cors')
+const routerTrainee=require('./routes/trainees')
+const conn=require('./db/conn')
+const app=express()
+
+app.use(express.json())
+app.use(cors())
+
+app.use('/Api',routerTrainee)
+
+app.listen(5000, ()=>{
+    console.log('server run on http://localhost:5000');
+    
+})
