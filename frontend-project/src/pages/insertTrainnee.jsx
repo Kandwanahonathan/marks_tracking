@@ -36,8 +36,8 @@ export default function TraineInsert() {
 
 
 return(
-    <div className='bg-gray-300 justify-center items-center min-h-screen'>
-        <div className='bg-gray-100 p-4 w-[600px] rounded-lg shadow-2xl mx-5 '>
+    <div className='bg-gray-300 flex flex-col justify-center items-center min-h-screen'>
+        <div className='bg-gray-100 p-4 w-[500px] max-x-xl rounded-lg shadow-2xl mt-10 '>
             <h1 className='text-center text-green-500 mt-3 mb-3 font-bold '>REGISTER TRAINEE</h1>
 
             
@@ -73,8 +73,10 @@ return(
 
                 <button onClick={trainee} className='bg-green-500 hover:bg-green-700 transition duration-600 mb-3 text-white font-bold p-3 mt-3 rounded-lg mt-3 w-full'>ADD TRAINEE</button>
             
-        </div><br /><br />
+        </div>
+        <div className='w-full max-w-5xl mt-10'>
         <Select/>
+        </div>
     </div>
 )
 

@@ -24,7 +24,7 @@ export default function Select() {
 
         <div>
             
-             <table border={2} className="border-collapse w-[90%] bg-green-200 shadow-2xl ">
+             <table border={2} className="border-collapse w-[90%] mt-8 bg-green-300 shadow-2xl ">
 
             <thead className="">
                 <tr>
@@ -42,11 +42,13 @@ export default function Select() {
 
                   {select.map((sel,index)=>(
                     <tr key={index}>
-                        <td>{sel.Trainee_Id}</td>
-                        <td>{sel.FirstNames}</td>
-                        <td>{sel.LastName}</td>
-                        <td>{sel.Gender}</td>
-                        <td>{sel.Trade_Id?.trade_name}</td>
+                        <td className="text-gray-700 font-bold ">{sel.Trainee_Id}</td>
+                        <td className="text-gray-700 font-bold ">{sel.FirstNames}</td>
+                        <td className="text-gray-700 font-bold ">{sel.LastName}</td>
+                        <td className="text-gray-700 font-bold ">{sel.Gender}</td>
+                        <td className="text-gray-700 font-bold ">{sel.Trade_Id?.trade_name}</td>
+                        <td className="text-gray-700 font-bold ">update</td>
+                        <td className="text-gray-700 font-bold ">delete</td>
                       
                     </tr>
                   ))}
