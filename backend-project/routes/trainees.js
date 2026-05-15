@@ -45,7 +45,7 @@ router.get('/selectTrainee',async (req,res)=>{
 
 // update the trainee
 
-router.put('/updateTrainee/_id',async (req,res)=>{
+router.put('/updateTrainee/:_id',async (req,res)=>{
    try {
     const {_id}=req.params
     const{Trainee_Id,FirstNames,LastName,Gender,Trade_Id}=req.body
@@ -58,8 +58,9 @@ router.put('/updateTrainee/_id',async (req,res)=>{
         LastName,
         Gender,
         Trade_Id,
-        new:"true"
-     })
+        
+     },{returnDocument:'after'},)
+     return res.status(200).json({message:"updated successfully",update:update})
      
     
    } catch (err) {
@@ -71,5 +72,22 @@ router.put('/updateTrainee/_id',async (req,res)=>{
    }
 })
 
+//delete trainee
+
+router.delete('/deleteTrainee/:_id',async(req,res)=>{
+    try {
+        const{_id}=req.params
+        const deleted=await trainees.findByIdAndDelete({_id})
+
+        return res.status(200).json({message:"trainee deleted successfull", del:deleted})
+
+
+    } catch (err) {
+         res.status(500).json({
+            success: false,
+            message: "Failed to save trainee in database"
+        })
+    }
+})
 
 module.exports=router
