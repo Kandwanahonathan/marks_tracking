@@ -21,4 +21,21 @@ router.post('/InsertTrades',async (req,res)=>{
    }
 })
 
+// SSSSelect
+
+router.get('/selectTrade', async (req,res)=>{
+      try {
+        const select=await tradeSchema.find()
+    
+        return res.status(200).json({message:"data retrieved successfully",select:select})
+      } catch(err){
+        console.log(err)
+        res.status(500).json({
+            success:false,
+            message:"failed to save trade in the database"
+        })
+      }
+})
+
+
 module.exports=router

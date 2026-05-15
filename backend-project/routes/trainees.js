@@ -43,5 +43,33 @@ router.get('/selectTrainee',async (req,res)=>{
 
 })
 
+// update the trainee
+
+router.put('/updateTrainee/_id',async (req,res)=>{
+   try {
+    const {_id}=req.params
+    const{Trainee_Id,FirstNames,LastName,Gender,Trade_Id}=req.body
+     if (!Trainee_Id || !FirstNames || !LastName || !Gender || !Trade_Id) {
+         return res.status(403).json({message:"fill out missing"})
+     }
+     const update=await trainees.findByIdAndUpdate(_id,{
+        Trainee_Id,
+        FirstNames,
+        LastName,
+        Gender,
+        Trade_Id,
+        new:"true"
+     })
+     
+    
+   } catch (err) {
+     console.log(err)
+         res.status(500).json({
+            success: false,
+            message: "Failed to save trainee in database"
+        })
+   }
+})
+
 
 module.exports=router

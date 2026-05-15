@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Select from './selectTrainee'
 
 export default function TraineInsert() {
@@ -8,6 +8,7 @@ export default function TraineInsert() {
     const[LastName, setLastName]=useState("")
     const[Gender, setGender]=useState("")
     const[Trade_Id, setTrade_Id]=useState(0)
+    const [trades, setTrades] = useState([])
     async function trainee() {
     try {
       
@@ -32,7 +33,22 @@ export default function TraineInsert() {
     }
 }
 
-//s
+//select trade
+
+const fetchTrade= async ()=>{
+ 
+  try {
+    const res =await axios.get('http://localhost:5000/Api/selectTrade');
+    setTrades(res.data.select)
+  } catch (err) {
+    alert(err.response?.data?.message || "server failed wait moment")
+  }
+
+}
+
+useEffect(()=>{
+  fetchTrade()
+})
 
 
 return(
@@ -64,19 +80,27 @@ return(
                 className='w-full border focus:outline-none focus:ring-2 focus:ring-green-500 tex-green-500 font-bold 
                 p-3 mb-3 rounded-lg mt-3
                  focus:text-green-500'/>
+                
             
-                <input type="text" value={Trade_Id} placeholder='Enter the Trade_Id '
+                <select  value={Trade_Id} 
                   onChange={(e)=>{setTrade_Id(e.target.value)}}
                 className='w-full border focus:outline-none focus:ring-2 focus:ring-green-500 tex-green-500 font-bold 
                 p-3 mb-3 rounded-lg mt-3
-                 focus:text-green-500'/>
+                 focus:text-green-500'>
 
-                <button onClick={trainee} className='bg-green-500 hover:bg-green-700 transition duration-600 mb-3 text-white font-bold p-3 mt-3 rounded-lg mt-3 w-full'>ADD TRAINEE</button>
+                  <option value="" > select trade</option>
+                  {trades.map((tr)=>(
+                    
+                    <option key={tr._id} value={tr._id}>{tr.trade_name}</option>
+                    
+                  ))}
+
+                </select>
+
+                <button onClick={trainee} className='bg-green-500 hover:bg-green-700 transition duration-600 mb-3 text-white font-bold p-3 mt-3 rounded-lg mt-3 w-full'> ADD TRAINEE </button>
             
         </div>
-        <div className='w-full max-w-5xl mt-10'>
-        <Select/>
-        </div>
+       
     </div>
 )
 
