@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const trainees=require('../schema/trainees');
+const tradeSchema=require('../schema/trade')
 
 router.post('/InsertTrainees',async (req,res)=>{
    try {
@@ -22,6 +23,25 @@ router.post('/InsertTrainees',async (req,res)=>{
    }
 })
 
+
+//select part in route of the trainee
+
+
+router.get('/selectTrainee',async (req,res)=>{
+ 
+    try {
+        const select=await trainees.find().populate('Trade_Id')
+    
+        return res.status(200).json({message:"data retrieved successfully",select:select})
+    } catch (err) {
+        console.log(err)
+         res.status(500).json({
+            success: false,
+            message: "Failed to save trainee in database"
+        })
+    }
+
+})
 
 
 module.exports=router

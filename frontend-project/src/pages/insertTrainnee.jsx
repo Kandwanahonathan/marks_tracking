@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React,{useState} from 'react'
-
+import Select from './selectTrainee'
 
 export default function TraineInsert() {
     const[Trainee_Id, setTrainee_Id]=useState(0)
@@ -32,9 +32,12 @@ export default function TraineInsert() {
     }
 }
 
+//s
+
+
 return(
-    <div className='bg-gray-40  flex justify-center items-center min-h-screen'>
-        <div className='bg-gray-100 p-4 w-[600px] rounded-lg shadow-2xl'>
+    <div className='bg-gray-300 justify-center items-center min-h-screen'>
+        <div className='bg-gray-100 p-4 w-[600px] rounded-lg shadow-2xl mx-5 '>
             <h1 className='text-center text-green-500 mt-3 mb-3 font-bold '>REGISTER TRAINEE</h1>
 
             
@@ -70,7 +73,8 @@ return(
 
                 <button onClick={trainee} className='bg-green-500 hover:bg-green-700 transition duration-600 mb-3 text-white font-bold p-3 mt-3 rounded-lg mt-3 w-full'>ADD TRAINEE</button>
             
-        </div>
+        </div><br /><br />
+        <Select/>
     </div>
 )
 

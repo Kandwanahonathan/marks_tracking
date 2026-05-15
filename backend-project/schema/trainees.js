@@ -5,7 +5,7 @@
     FirstNames:{type:String,required:true},
     LastName:{type:String,required:true},
     Gender:{type:String,required:true},
-    Trade_Id:{type:mongoose.Schema.Types.ObjectId, required:true, ref:"trade"
+    Trade_Id:{type:mongoose.Schema.Types.ObjectId, required:true, ref:"trades"
 
     },
  })
