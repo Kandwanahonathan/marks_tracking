@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import TraineInsert from './pages/insertTrainnee'
 import Select from './pages/selectTrainee'
+import UpdateTrainee from './pages/UpdateTrainee'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Select />}/>
           <Route path='/insert' element={<TraineInsert />}/>
+          <Route path='/update/:_id' element={<UpdateTrainee />}/>
         </Routes>
     </BrowserRouter>
   )

@@ -49,17 +49,14 @@ router.put('/updateTrainee/:_id',async (req,res)=>{
    try {
     const {_id}=req.params
     const{Trainee_Id,FirstNames,LastName,Gender,Trade_Id}=req.body
-     if (!Trainee_Id || !FirstNames || !LastName || !Gender || !Trade_Id) {
-         return res.status(403).json({message:"fill out missing"})
-     }
-     const update=await trainees.findByIdAndUpdate(_id,{
-        Trainee_Id,
-        FirstNames,
-        LastName,
-        Gender,
-        Trade_Id,
-        
-     },{returnDocument:'after'},)
+
+    let updated = {};
+    if (Trade_Id) updated.Trade_Id = Trade_Id;
+    if (FirstNames) updated.FirstNames = FirstNames;
+    if (LastName) updated.LastName = LastName;
+    if (Gender) updated.Gender = Gender;
+    if (Trainee_Id) updated.Trainee_Id = Trainee_Id;
+     const update=await trainees.findByIdAndUpdate(_id, updated,{returnDocument:'after'},)
      return res.status(200).json({message:"updated successfully",update:update})
      
     

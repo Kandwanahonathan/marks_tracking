@@ -1,6 +1,7 @@
 const express=require('express')
 const cors=require('cors')
 const routerTrainee=require('./routes/trainees')
+const markRoutes=require('./routes/marks')
 const conn=require('./db/conn')
 const  Routertrades=require('./routes/trades')
 const app=express()
