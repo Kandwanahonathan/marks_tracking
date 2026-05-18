@@ -15,6 +15,6 @@ app.use('/Api',routerTrainee)
 app.use('/Api',Routertrades)
 app.use('/mark',router)
 app.listen(5000, ()=>{
-    console.log('server run on http://localhost:5000');
+    console.log('server run on http://localhost:5000/mark');
     
 })
